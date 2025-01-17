@@ -109,6 +109,7 @@ class InvoicesController < ApplicationController
 
     @invoices = @invoices.joins(services: :container)
                          .where("containers.number ILIKE ?", "%#{params[:number]}%")
+                         .distinct
   end
 
   def filter_by_user
