@@ -88,7 +88,7 @@
                 <% end %>
               </td>
             </tr>
-            <% total_charge += service.charge %>
+            <% total_charge += service.charge&.to_f %>
           <% end %>
         </tbody>
         <tfoot>
