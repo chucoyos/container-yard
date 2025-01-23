@@ -126,7 +126,8 @@
             <th class="px-2">Dueño</th>
             <th class="px-2">Entrada</th>
             <th class="px-2">Salida</th>
-            <th class="px-2">Pago</th>
+            <th class="px-2">Factura</th>
+            <th class="px-2">Credito Disponible</th>
             <th class="px-2">Acción</th>
           </tr>
         </thead>
@@ -162,6 +163,9 @@
                 <% end %>
               </td>
               <td class="border px-2 text-center">
+                <%= number_to_currency(container.user.available_credit) %>
+              </td>
+              <td class="border px-2 text-center">
                 <%= link_to container, class: "text-blue-600", title: "Ver detalles" do %>
                   <%= material_icon.shape(:visibility) %>
                 <% end %>
@@ -171,7 +175,7 @@
         </tbody>
       </table>
     <% end %>
-</div>
+  </div>
 
 <div class="my-4 flex justify-center bg-blue-50 rounded-lg px-6 py-2 border border-gray-300 rounded-lg shadow">
   <%= paginate @containers %>

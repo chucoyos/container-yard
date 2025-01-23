@@ -18,3 +18,11 @@ class User < ApplicationRecord
     "#{first_name} #{last_name} #{second_last_name}"
   end
 end
+
+def update_available_credit
+  pending_total = invoices.where(status: "Pendiente").sum(:total)
+  partial_total = invoices.where(status: "Parcial").sum { |invoice| invoice.total - invoice.payments.sum(:amount).to_f }
+
+  self.available_credit = credit_limit - (pending_total + partial_total)
+  save!
+end

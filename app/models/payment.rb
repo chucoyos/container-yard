@@ -11,6 +11,10 @@ class Payment < ApplicationRecord
 
   private
 
+  def update_user_credit
+    invoice.user.update_available_credit
+  end
+
   def update_invoice
     total_payments = invoice.payments.sum(:amount)
 
