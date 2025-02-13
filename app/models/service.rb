@@ -1,5 +1,5 @@
 class Service < ApplicationRecord
-  NAMES = %w[Camión-Piso Piso-Camión Camión-Camión Almacenaje Lavado Reacomodo].freeze
+  NAMES = %w[Camión-Piso Piso-Camión Camión-Camión Almacenaje Lavado Reacomodo Servicio-Extraordinario].freeze
 
   belongs_to :container, optional: true
   belongs_to :invoice, optional: true
