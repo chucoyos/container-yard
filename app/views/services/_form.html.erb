@@ -18,22 +18,22 @@
   
 
   <div class="my-5">
-    <%= form.label :name %>
+    <%= form.label :name, "Nombre" %>
     <%= form.collection_select :name, Service::NAMES, :to_s, :to_s, { include_blank: true }, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :charge %>
+    <%= form.label :charge, "Cargo" %>
     <%= form.text_field :charge, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :start_date %>
+    <%= form.label :start_date, "Fecha de inicio" %>
     <%= form.date_field :start_date, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :end_date %>
+    <%= form.label :end_date, "Fecha de final" %>
     <%= form.date_field :end_date, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   
