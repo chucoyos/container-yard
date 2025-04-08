@@ -1,4 +1,4 @@
-<div class="px-2">
+<div class="px-8">
   <%= form_with(model: eir, class: "contents") do |form| %>
     <% if eir.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -42,9 +42,9 @@
       <%= form.text_field :fleet_number, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="flex gap-2">
-      <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-      <%= link_to "Cancelar", eirs_path, class: "btn-primary" %>
+    <div class="flex gap-2 py-4">
+      <%= form.submit class: "btn-primary mb-16" %>
+      <%= link_to "Cancelar", eirs_path, class: "btn-primary mb-16" %>
     </div>
   <% end %>
 </div>
