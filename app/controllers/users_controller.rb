@@ -4,7 +4,25 @@ class UsersController < ApplicationController
   def index
     authorize current_user, :index?, policy_class: UserPolicy
     # @users = User.order(:first_name).page(params[:page]).per(10)
+    # Add search functionality below by name and role
+
     @users = User.includes(:role).order(:first_name).page(params[:page]).per(10)
+
+    if params[:full_name].present?
+      query = "%#{params[:full_name]}%"
+      @users = @users.where(
+        "users.first_name ILIKE :q
+         OR users.last_name ILIKE :q
+         OR users.second_last_name ILIKE :q
+         OR CONCAT(users.first_name, ' ', users.last_name) ILIKE :q
+         OR CONCAT(users.first_name, ' ', users.last_name, ' ', users.second_last_name) ILIKE :q",
+        q: query
+      )
+    end
+
+    if params[:role_id].present?
+      @users = @users.where(role_id: params[:role_id])
+    end
   end
 
   def new
