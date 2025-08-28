@@ -10,22 +10,40 @@
     </div>
   <% end %>
 
-  <div class="mx-auto mt-6">
-    <div class="flex flex-col">
-      <h1 class="text-2xl font-bold">Rol</h1>
-      <h2 class="my-4 text-xl font-semibold"><%= @role.name %></h2>
-      <h3 class="text-lg font-medium mt-4">Permisos Otorgados:</h3>
-      <ul class="list-disc list-inside ml-6">
-        <% @role.permissions.each do |permission| %>
-          <li class="text-gray-700"><%= permission.name %></li>
-        <% end %>
-      </ul>
-      <div class="flex gap-4 mt-6">
+  <div class="mx-auto mt-8 max-w-2xl">
+    <div class="bg-blue-50 shadow-lg rounded-2xl p-6">
+
+      <!-- Header -->
+      <h1 class="text-3xl font-bold text-gray-800">Rol</h1>
+      <h2 class="mt-2 text-xl font-semibold text-blue-600"><%= @role.name %></h2>
+
+      <!-- Permissions -->
+      <div class="mt-6">
+        <h3 class="text-lg font-medium text-gray-700">Permisos Otorgados</h3>
+        <ul class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <% @role.permissions.each do |permission| %>
+            <li class="flex items-center text-gray-700 bg-gray-50 px-3 py-2 rounded-lg shadow-sm">
+              <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <%= permission.name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-wrap gap-3 my-8">
         <%= link_to "Editar", edit_role_path(@role), class: "btn-primary" %>
         <%= link_to "Regresar", roles_path, class: "btn-primary" %>
-        <%= button_to "Eliminar", @role, data: { turbo_confirm: "¿Quieres eliminar este Rol?" }, method: :delete, class: "btn-danger" %>
+        <%= button_to "Eliminar", @role, 
+              data: { turbo_confirm: "¿Quieres eliminar este Rol?" }, 
+              method: :delete, 
+              class: "btn-danger" %>
       </div>
+
     </div>
   </div>
+
 </div>
 

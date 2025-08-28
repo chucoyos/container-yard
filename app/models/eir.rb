@@ -3,6 +3,9 @@ require "prawn/qrcode"
 
 class Eir < ApplicationRecord
   belongs_to :container
+  validates :operator, presence: true
+  validates :transport, presence: true
+  validates :plate, presence: true
 
   def generate_pdf
     Prawn::Document.new do |pdf|

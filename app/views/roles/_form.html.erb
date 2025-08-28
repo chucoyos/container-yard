@@ -12,24 +12,24 @@
   <% end %>
   <div class="flex flex-col mb-20">
     <div class="my-5">
-      <%= form.label :name %>
+      <%= form.label :name, "Nombre" %>
       <%= form.text_field :name, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="">
+    <div class="border rounded-lg px-4 py-2 mb-2 shadow bg-blue-50">
       <%= form.label "Permisos" %>
       <%= hidden_field_tag "role[permission_ids][]", "" %>
-      <div class="my-2 flex flex-col">
+      <div class="my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <% @permissions.each do |permission| %>
-          <div class="border rounded-lg px-4 py-2 mb-2 shadow bg-blue-50">
-            <%= check_box_tag "role[permission_ids][]", permission.id, @role.permissions.include?(permission), class: "rounded mx-2" %>
-            <%= permission.name %>
-          </div>
+          <label class="flex items-center space-x-3 border rounded-md px-4 py-3 shadow-sm bg-white hover:shadow-md transition cursor-pointer">
+            <%= check_box_tag "role[permission_ids][]", permission.id, @role.permissions.include?(permission), class: "rounded text-blue-600 focus:ring focus:ring-blue-300" %>
+            <span class="text-gray-700 font-medium ml-2"><%= permission.name %></span>
+          </label>
         <% end %>
       </div>
     </div>
 
-    <div class="">
+    <div class="flex gap-2 py-4 mb-20">
       <%= form.submit "Guardar", class: "btn-primary" %>
       <%= link_to "Regresar", roles_path, class: "btn-primary" %>
     </div>
