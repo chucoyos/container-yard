@@ -21,9 +21,23 @@ class Container < ApplicationRecord
   validates :size, presence: true
   validates :size, inclusion: { in: %w[20 40],
                                 message: "%{value} no es un tamaño válido" }
+  validate :unique_active_container, if: :will_save_change_to_number?
+
   private
 
   def upcase_number
     self.number = number.upcase
+  end
+
+  # Custom validation to enforce uniqueness only for active containers
+  def unique_active_container
+    if Container
+        .where(number: number.upcase)
+        .where.not(id: id)
+        .joins(:moves)
+        .where.not(moves: { move_type: "Salida" })
+        .exists?
+      errors.add(:number, "ya existe un contenedor activo con este número")
+    end
   end
 end
