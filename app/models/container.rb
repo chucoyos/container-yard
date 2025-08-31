@@ -31,13 +31,16 @@ class Container < ApplicationRecord
 
   # Custom validation to enforce uniqueness only for active containers
   def unique_active_container
-    if Container
-        .where(number: number.upcase)
-        .where.not(id: id)
-        .joins(:moves)
-        .where.not(moves: { move_type: "Salida" })
-        .exists?
-      errors.add(:number, "ya existe un contenedor activo con este número")
+    active_exists = Container
+      .where(number: number.upcase)
+      .where.not(id: id)
+      .any? do |c|
+        last_move = c.moves.order(created_at: :desc).first
+        last_move.nil? || last_move.move_type != "Salida"
+      end
+
+    if active_exists
+      errors.add(:number, "Ya existe un contenedor activo con este número")
     end
   end
 end
