@@ -196,8 +196,8 @@ class ContainersController < ApplicationController
 
     workbook.add_worksheet(name: "Containers") do |sheet|
       # Add header row with styles
-      sheet.add_row [ "Cliente", "Número", "Tipo", "Tamaño", "Carga", "Dueño de la Carga", "Entrada", "EIR", "Operador", "Placas", "Salida", "EIR", "Operador", "Placas", "Reacomodo", "Lavado", "Traspaleo", "Ubicación" ],
-                    style: [ header_style_centered_blue ] * 6 + [ header_style_centered_green ] * 4 + [ header_style_centered_yellow ] * 4 + [ header_style_centered_blue ] * 4
+      sheet.add_row [ "Cliente", "Número", "Tipo", "Tamaño", "Carga", "Dueño de la Carga", "Pago", "Entrada", "EIR", "Operador", "Placas", "Salida", "EIR", "Operador", "Placas", "Reacomodo", "Lavado", "Traspaleo", "Ubicación" ],
+                    style: [ header_style_centered_blue ] * 7 + [ header_style_centered_green ] * 4 + [ header_style_centered_yellow ] * 4 + [ header_style_centered_blue ] * 4
 
       # Add data rows
       containers.each do |container|
@@ -215,6 +215,11 @@ class ContainersController < ApplicationController
           container.size,
           container.moves.last&.status,
           container.cargo_owner,
+          if container.invoices.any?
+            container.invoices.last.status
+          else
+            "Sin Facturar"
+          end,
           entrada_move&.created_at&.in_time_zone("America/Mexico_City")&.strftime("%d/%m/%Y %H:%M"),
           container.eirs&.first&.id,
           container.eirs&.first&.operator,
@@ -232,8 +237,8 @@ class ContainersController < ApplicationController
         # Apply left alignment to integer columns (like container number, EIR IDs)
         sheet.add_row row, style: [
           nil, left_align_style, nil, left_align_style, nil, nil, # Align container number, size to the left
-          nil, left_align_style, nil, nil,                       # Align EIR ID (Entrada) to the left
-          nil, left_align_style, nil, nil,                       # Align EIR ID (Salida) to the left
+          nil, left_align_style, left_align_style, nil,                       # Align EIR ID (Entrada) to the left
+          nil, left_align_style, left_align_style, nil,                       # Align EIR ID (Salida) to the left
           nil, nil, nil, nil                                    # Remaining columns as is
         ]
       end
