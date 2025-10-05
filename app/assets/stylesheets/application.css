@@ -15,3 +15,75 @@
  *= require_tree.
  *= require_self
  */
+
+ /* Material Design inspired styles */
+.material-form {
+  max-width: 400px;
+  margin: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem 1.5rem;
+}
+
+.md-input-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.md-input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+  background: transparent;
+  padding: 1rem 0 0.5rem 0;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.md-input:focus {
+  border-bottom: 2px solid #3f51b5;
+}
+
+.md-label {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  color: #757575;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+.md-input:focus + .md-label,
+.md-input:not(:placeholder-shown) + .md-label {
+  top: -0.7rem;
+  font-size: 0.85rem;
+  color: #3f51b5;
+  background: #fff;
+  padding: 0 0.25rem;
+}
+
+.md-checkbox {
+  accent-color: #3f51b5;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.md-btn-primary {
+  background: #3f51b5;
+  color: #fff;
+  border: none;
+  /* border-radius: 5px;   */
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  /* box-shadow: 0 2px 4px rgba(63,81,181,0.1); */
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.md-btn-primary:hover {
+  background: #303f9f;
+}

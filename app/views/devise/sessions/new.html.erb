@@ -1,26 +1,26 @@
 <div class="flex flex-col w-full px-8 mb-16">
-  <div class="form">
-    <h1 class="my-6">Iniciar Sesión</h1>
+  <div class="form material-form">
+    <h1 class="my-6 text-2xl font-semibold text-center">Iniciar Sesión</h1>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="input-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      <div class="md-input-group">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "md-input rounded-lg", required: true %>
+        <%= f.label :email, class: "md-label" %>
       </div>
 
-      <div class="input-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      <div class="md-input-group">
+        <%= f.password_field :password, autocomplete: "current-password", class: "md-input rounded-lg", required: true %>
+        <%= f.label :password, class: "md-label" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
-        <div class="imput-group my-4">
-          <%= f.check_box :remember_me, class: "rounded" %>
-          <%= f.label :remember_me %>
+        <div class="flex items-center my-4">
+          <%= f.check_box :remember_me, class: "md-checkbox rounded-lg" %>
+          <%= f.label :remember_me, class: "ml-2 text-gray-700" %>
         </div>
       <% end %>
 
-      <div class="form-group">
-        <%= f.submit "Iniciar Sesión", class: "btn-primary mb-2" %>
+      <div class="mt-6">
+        <%= f.submit "Iniciar Sesión", class: "md-btn-primary w-full rounded-lg shadow-lg" %>
       </div>
     <% end %>
   </div>
