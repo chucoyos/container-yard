@@ -20,7 +20,7 @@
 .material-form {
   max-width: 400px;
   margin: auto;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 2rem 1.5rem;

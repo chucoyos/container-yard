@@ -3,14 +3,18 @@
     <% if user_signed_in? %>
         <%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Cerrar Sesión?" } do %>
           <li class="flex flex-col items-center">
-            <%= material_icon.shape(:logout) %>
+            <span class="hover:bg-blue-50 hover:text-blue-800 rounded-lg px-2 py-1">
+              <%= material_icon.shape(:logout) %>
+            </span>
             <span class="text-sm">Salir</span>
           </li>
         <% end %>
 
         <%= link_to invoices_path do %>
           <li class="flex flex-col items-center">
-            <%= material_icon.shape(:receipt_long) %>
+            <span class="hover:bg-blue-50 hover:text-blue-800 rounded-lg px-2 py-1">
+              <%= material_icon.shape(:receipt_long) %>
+            </span>
             <span class="text-sm">Fact</span>
           </li>
         <% end %>
@@ -18,21 +22,27 @@
 
         <%= link_to containers_path do %>
           <li class="flex flex-col items-center">
-            <%= material_icon.shape(:local_shipping) %>
+            <span class="hover:bg-blue-50 hover:text-blue-800 rounded-lg px-2 py-1">
+              <%= material_icon.shape(:local_shipping) %>
+            </span>
             <span class="text-sm">Cont</span>
           </li>
         <% end %>
 
         <%= link_to eirs_path do %>
           <li class="flex flex-col items-center">
-            <%= material_icon.shape(:qr_code_2) %>
+            <span class="hover:bg-blue-50 hover:text-blue-800 rounded-lg px-2 py-1">
+              <%= material_icon.shape(:qr_code_2) %>
+            </span>
             <span class="text-sm">EIR</span>
           </li>
         <% end %>
 
         <%= link_to moves_path do %>
           <li class="flex flex-col items-center">
-            <%= material_icon.shape(:import_export) %>
+            <span class="hover:bg-blue-50 hover:text-blue-800 rounded-lg px-2 py-1">
+              <%= material_icon.shape(:import_export) %>
+            </span>
             <span class="text-sm">Movs</span>
           </li>
         <% end %>
@@ -41,14 +51,18 @@
 
         <%= link_to notifications_path do %>
           <li class="flex flex-col items-center">
-            <%= material_icon.shape(:notifications) %>
+            <span class="hover:bg-blue-50 hover:text-blue-800 rounded-lg px-2 py-1">
+              <%= material_icon.shape(:notifications) %>
+            </span>
             <span class="text-sm">Notif</span>
           </li>
         <% end %>
 
         <%= link_to catalogs_path do %>
           <li class="flex flex-col items-center">
-            <%= material_icon.shape(:layers) %>
+            <span class="hover:bg-blue-50 hover:text-blue-800 rounded-lg px-2 py-1">
+              <%= material_icon.shape(:layers) %>
+            </span>
             <span class="text-sm lg:hidden">Cat</span>
             <span class="text-sm hidden lg:flex">Catálogos</span>
           </li>
@@ -57,7 +71,9 @@
     <% else %>
         <%= link_to new_user_session_path do %>
           <li class="flex flex-col items-center">
-            <%= material_icon.shape(:login) %>
+            <span class="hover:bg-blue-50 hover:text-blue-800 rounded-lg px-2 py-1">
+              <%= material_icon.shape(:login) %>
+            </span>
             <span class="text-sm">Login</span>
           </li>
         <% end %>
